@@ -34,22 +34,22 @@
             <video src="../00-banner/video/smoke.mp4" autoplay muted></video>
             <div class="text-area">
                 <h3>
-                        <span>I'm</span>
-                        <span>&nbsp;</span>
-              
-                        <span>A</span>
-                        <span>n</span>
-                        <span>d</span>
-                        <span>r</span>
-                        <span>é</span>
-                        <span>&nbsp;</span>
-                 
-                        <span>S</span>
-                        <span>u</span>
-                        <span>c</span>
-                        <span>k</span>
-                        <span>o</span>
-                        <span>w.</span>
+                    <span>I'm</span>
+                    <span>&nbsp;</span>
+
+                    <span>A</span>
+                    <span>n</span>
+                    <span>d</span>
+                    <span>r</span>
+                    <span>é</span>
+                    <span>&nbsp;</span>
+
+                    <span>S</span>
+                    <span>u</span>
+                    <span>c</span>
+                    <span>k</span>
+                    <span>o</span>
+                    <span>w.</span>
                 </h3>
             </div>
         </div>
@@ -163,7 +163,9 @@
             </div>
         </div>
         <div class="heading">
-            <a href="#" class="btn">View More</a>
+            <div class="btn">
+                <a href="#">View More</a>
+            </div>
         </div>
     </section>
 
@@ -295,6 +297,27 @@
             menuToggle.classList.toggle('active');
             menu.classList.toggle('active');
         }
+
+
+
+        async function getUsuarioMinhaApi() {
+            let user = await fetch('http://localhost:3333/user').then((response) => {
+                return response.json();
+            });
+            console.log(user)
+        }
+
+        let img = document.querySelector('.img')
+
+        async function getGithubUser(username) {
+            let user = await fetch(`https://api.github.com/users/${username}`).then((response) => {
+                return response.json();
+            });
+            img.setAttribute('src', user.avatar_url)
+        }
+
+        getGithubUser('andresuckow');
+        getUsuarioMinhaApi()
     </script>
 </body>
 
